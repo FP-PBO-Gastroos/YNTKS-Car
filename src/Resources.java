@@ -34,22 +34,22 @@ import java.io.IOException;
     public static void loadResources() {
         try {
 
-            carImage = ImageIO.read(Resources.class.getResource("Images/CarFix1.png"));
+            carImage = ImageIO.read(Resources.class.getResource("Images/playerCar.png"));
+            redCarImage = ImageIO.read(Resources.class.getResource("Images/enemyCar1.png"));
+            newCarImage = ImageIO.read(Resources.class.getResource("Images/enemyCar2.png"));
+            baricadeImage = ImageIO.read(Resources.class.getResource("Images/death.png"));
             playPause = ImageIO.read(Resources.class.getResource("Images/playpause.jpg"));
-            welcomeStageImage = ImageIO.read(Resources.class.getResource("Images/welcome.jpg"));
+            welcomeToGameImage = ImageIO.read(Resources.class.getResource("Images/menubg.jpg"));
+            welcomeStageImage = ImageIO.read(Resources.class.getResource("Images/menubg.jpg"));
             congImage = ImageIO.read(Resources.class.getResource("Images/com.jpg"));
             finishLineImage = ImageIO.read(Resources.class.getResource("Images/end.jpg"));
-            baricadeImage = ImageIO.read(Resources.class.getResource("Images/baar.jpg"));
-            newCarImage = ImageIO.read(Resources.class.getResource("Images/newCar.png"));
             crashBoomImage = ImageIO.read(Resources.class.getResource("Images/crash.png"));
             truckImage = ImageIO.read(Resources.class.getResource("Images/truck.png"));
-            redCarImage = ImageIO.read(Resources.class.getResource("Images/redCar.png"));
             roadImage = ImageIO.read(Resources.class.getResource("Images/road1.jpg"));
-            welcomeToGameImage = ImageIO.read(Resources.class.getResource("Images/start.jpg"));
             carCrash= Applet.newAudioClip(Resources.class.getResource("AudioClips/carcrash.wav"));
-            carMoving= Applet.newAudioClip(Resources.class.getResource("AudioClips/carmoving.wav"));
-            mainMenuTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/mainmenutone.wav"));
-            welcomeTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/welcometone.wav"));
+            carMoving= Applet.newAudioClip(Resources.class.getResource("AudioClips/carSound.wav"));
+            mainMenuTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/backSongMenu.wav"));
+            welcomeTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/backSongWelcome.wav"));
             gameOverTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/gameover.wav"));
             finishTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/finish.wav"));
             truckTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/truckAudio.wav"));

@@ -103,7 +103,8 @@ public class StageOne extends State {
         //CODE TO HIDE RED CARS WHEN THEY HIT BARRICADE
         for (int i = 0; i < redCarList.size(); i++) {
             if (redCarList.get(i).checkIntersection(barricade))
-                redCarList.get(i).hidden = true;
+            	//diubah jadi false
+                redCarList.get(i).hidden = false;
         }
 
         //CODE TO UPDATE POSITIONS OF EVERY ELEMENT

@@ -18,14 +18,14 @@ public class MenuState extends State {
 
 
         graphics.drawImage(Resources.welcomeToGameImage,0,0,400,700,null);
-        graphics.setColor(Color.CYAN);
-        graphics.setFont(new Font(Font.SERIF,Font.BOLD,35));
-        graphics.drawString("WELCOME TO THE",50,270);
-        graphics.drawString("GAME",160,320);
-        graphics.setFont(new Font(Font.SERIF,Font.PLAIN,30));
-        graphics.setColor(Color.CYAN);
+        graphics.setColor(Color.RED);
+        graphics.setFont(new Font(Font.MONOSPACED,Font.BOLD,50));
+       // graphics.drawString("YNTKS-CAR",50,270);
+        graphics.drawString("YNTKS-CAR",62,320);
+        graphics.setFont(new Font(Font.MONOSPACED,Font.BOLD,30));
+        graphics.setColor(Color.WHITE);
         graphics.drawString("START GAME",110,375);
-        graphics.drawString("EXIT",175,425);
+        graphics.drawString("EXIT",160,425);
 
     }
 

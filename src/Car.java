@@ -6,8 +6,9 @@ public class Car extends Elements{
 
     public Car()
     {
-        this.y=550;
-        this.x=100;
+    	//Koordinat letak mobil
+        this.y=530;
+        this.x=176;
         this.xVel=0;
         this.width=55;
         this.height=80;

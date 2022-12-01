@@ -9,8 +9,8 @@ public class Barricade extends Elements {
         this.setX();
         this.y=origin;
         this.yvel=vel;
-        this.width=200;
-        this.height=40;
+        this.width=44;
+        this.height=46;
     }
 
     public void checkBound()
@@ -29,7 +29,7 @@ public class Barricade extends Elements {
         if (r==0)
             this.x=0;
         else
-            this.x=200;
+            this.x=125;
     }
 
 
