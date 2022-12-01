@@ -1,13 +1,9 @@
-
 import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 
-/**
- * Created by Ram on 7/6/2016.
- */
 public class MenuState extends State {
     private  int count=0;
     @Override

@@ -1,12 +1,8 @@
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
-/**
- * Created by Ram on 7/9/2016.
- */
  abstract public class Elements {
     public int x = 0;
     public int y = 0;
@@ -64,11 +60,8 @@ import java.util.Random;
             car.xVel = 7;
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             car.xVel = -7;
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN)
             car.xVel = 0;
-        } 
-//            else if (e.getKeyCode() == KeyEvent.VK_UP)
-//            car.yVel = 1;
     }
 
 

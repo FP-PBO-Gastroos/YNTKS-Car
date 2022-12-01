@@ -1,7 +1,3 @@
-
-/**
- * Created by Ram on 7/13/2016.
- */
 public class FinalLine extends Elements {
     public FinalLine(int vel,int origin)
     {

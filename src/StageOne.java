@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.KeyEvent;
@@ -7,9 +6,6 @@ import java.awt.geom.Arc2D;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ram on 7/6/2016.
- */
 public class StageOne extends State {
 
     private int time = 100;

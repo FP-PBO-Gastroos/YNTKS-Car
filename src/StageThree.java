@@ -1,13 +1,9 @@
-
 import java.awt.*;
 import java.awt.List;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
-/**
- * Created by Ram on 7/21/2016.
- */
 public class StageThree extends State {
     private Road road = new Road(12);
     private Car car = new Car();

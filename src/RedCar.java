@@ -1,9 +1,5 @@
-
 import java.util.Random;
 
-/**
- * Created by Ram on 7/6/2016.
- */
 public class RedCar extends Elements{
 
     Random random = new Random();

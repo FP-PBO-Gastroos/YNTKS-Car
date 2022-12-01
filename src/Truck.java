@@ -1,7 +1,3 @@
-
-/**
- * Created by Ram on 7/13/2016.
- */
 public class Truck extends Elements {
 
     public Truck(int origin,int vel)

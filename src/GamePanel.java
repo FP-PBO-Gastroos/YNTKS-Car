@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -8,9 +7,6 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.FileReader;
 
-/**
- * Created by Ram on 7/6/2016.
- */
 public class GamePanel extends JPanel implements KeyListener,Runnable,MouseListener{
 
 
@@ -80,7 +76,7 @@ public class GamePanel extends JPanel implements KeyListener,Runnable,MouseListe
             GamePanel.currentState.update(imageGraphics);
             imageGraphics.setFont(new Font(Font.MONOSPACED,Font.PLAIN,15));
             imageGraphics.setColor(Color.WHITE);
-            imageGraphics.drawString("Developed by Rambabu", 30, 30);
+            imageGraphics.drawString("Developed by Gastroos", 30, 30);
             imageGraphics.dispose();
 
             panelGraphics.drawImage(tempImage, 0, 0, null);

@@ -1,13 +1,9 @@
-
 import javax.imageio.ImageIO;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.*;
 import java.io.IOException;
 
-/**
- * Created by Ram on 7/6/2016.
- */
     public class Resources {
     public static Image carImage;
     public static Image redCarImage;
@@ -44,10 +40,10 @@ import java.io.IOException;
             congImage = ImageIO.read(Resources.class.getResource("Images/com.jpg"));
             finishLineImage = ImageIO.read(Resources.class.getResource("Images/end.jpg"));
             baricadeImage = ImageIO.read(Resources.class.getResource("Images/baar.jpg"));
-            newCarImage = ImageIO.read(Resources.class.getResource("Images/Car3.png"));
+            newCarImage = ImageIO.read(Resources.class.getResource("Images/newCar.png"));
             crashBoomImage = ImageIO.read(Resources.class.getResource("Images/crash.png"));
             truckImage = ImageIO.read(Resources.class.getResource("Images/truck.png"));
-            redCarImage = ImageIO.read(Resources.class.getResource("Images/Car2.png"));
+            redCarImage = ImageIO.read(Resources.class.getResource("Images/redCar.png"));
             roadImage = ImageIO.read(Resources.class.getResource("Images/road1.jpg"));
             welcomeToGameImage = ImageIO.read(Resources.class.getResource("Images/start.jpg"));
             carCrash= Applet.newAudioClip(Resources.class.getResource("AudioClips/carcrash.wav"));

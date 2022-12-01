@@ -1,7 +1,3 @@
-
-/**
- * Created by Ram on 7/13/2016.
- */
 public class newCar extends Elements {
 
     public newCar(int origin, int vel)

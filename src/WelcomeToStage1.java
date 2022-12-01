@@ -1,11 +1,7 @@
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-/**
- * Created by Ram on 7/13/2016.
- */
 public class WelcomeToStage1 extends State{
     private int count=0;
 

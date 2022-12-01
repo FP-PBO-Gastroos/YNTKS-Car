@@ -1,12 +1,8 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-/**
- * Created by Ram on 7/6/2016.
- */
 public class GameOverState extends State {
     private Object[] options = {"PLAY AGAIN",
             "EXIT",};
