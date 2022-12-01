@@ -44,7 +44,7 @@ import java.io.IOException;
             congImage = ImageIO.read(Resources.class.getResource("Images/com.jpg"));
             finishLineImage = ImageIO.read(Resources.class.getResource("Images/end.jpg"));
             crashBoomImage = ImageIO.read(Resources.class.getResource("Images/crash.png"));
-            truckImage = ImageIO.read(Resources.class.getResource("Images/truck.png"));
+            truckImage = ImageIO.read(Resources.class.getResource("Images/Car4.png"));
             roadImage = ImageIO.read(Resources.class.getResource("Images/road1.jpg"));
             carCrash= Applet.newAudioClip(Resources.class.getResource("AudioClips/carcrash.wav"));
             carMoving= Applet.newAudioClip(Resources.class.getResource("AudioClips/carSound.wav"));

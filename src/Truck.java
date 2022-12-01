@@ -12,10 +12,10 @@ public class Truck extends Elements {
 
     public void checkBound()
     {
-        if (this.y>1000)
+        if (this.y>800)
         {
             this.setXRandom(0,300);
-            this.y=-1500;
+            this.y=-400;
             this.hidden=false;
         }
     }
