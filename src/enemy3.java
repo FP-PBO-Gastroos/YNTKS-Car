@@ -1,9 +1,9 @@
 import java.util.Random;
 
 
-public class newCar2 extends Elements {
+public class enemy3 extends Elements {
 	Random random = new Random();
-    public newCar2(int origin, int vel)
+    public enemy3(int origin, int vel)
     {
         this.setXRandom(5,340);
         this.yvel=vel;

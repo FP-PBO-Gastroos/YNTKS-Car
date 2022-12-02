@@ -1,10 +1,10 @@
 import java.util.Random;
 
-public class RedCar extends Elements{
+public class enemy1 extends Elements{
 
     Random random = new Random();
 
-    public RedCar(int origin,int vel)
+    public enemy1(int origin,int vel)
     {
         this.setXRandom(5,340);
         this.y=origin;

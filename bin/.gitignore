@@ -1,7 +1,7 @@
 /AudioClips/
-/Barricade.class
 /Car.class
 /CompleteGame.class
+/Death.class
 /Demo.class
 /Elements.class
 /FinalLine.class
@@ -21,4 +21,6 @@
 /WelcomeToStage3.class
 /newCar.class
 /newCar2.class
-/Death.class
+/enemy1.class
+/enemy2.class
+/enemy3.class

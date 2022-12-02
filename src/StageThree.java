@@ -8,18 +8,18 @@ public class StageThree extends State {
     private Road road = new Road(12);
     private Car car = new Car();
     private FinalLine finalLine = new FinalLine(12, -8000);
-    private newCar newCar1 = new newCar(-400, 15);
-    private newCar newCar2 = new newCar(-1100, 15);
-    private RedCar redCar1 = new RedCar(-750, 15);
-    private RedCar redCar2 = new RedCar(-1450, 15);
-    private newCar2 car2 = new newCar2(-1700, 15);
+    private enemy2 newCar1 = new enemy2(-400, 15);
+    private enemy2 newCar2 = new enemy2(-1100, 15);
+    private enemy1 redCar1 = new enemy1(-750, 15);
+    private enemy1 redCar2 = new enemy1(-1450, 15);
+    private enemy3 car2 = new enemy3(-1700, 15);
 //    private newCar2 car3 = new newCar2(-1250, 15);
     private Death death = new Death(-800, 12);
     private int count = 0;
     private java.util.List<Elements> list = new ArrayList<>();
-    private java.util.List<RedCar> redCarsArrayList = new ArrayList<>();
-    private java.util.List<newCar> newCarArrayList = new ArrayList<>();
-    private java.util.List<newCar2> newCar2ArrayList = new ArrayList<>();
+    private java.util.List<enemy1> redCarsArrayList = new ArrayList<>();
+    private java.util.List<enemy2> newCarArrayList = new ArrayList<>();
+    private java.util.List<enemy3> newCar2ArrayList = new ArrayList<>();
     private boolean finishStage = false;
     private int time = 100;
 

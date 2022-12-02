@@ -10,15 +10,15 @@ public class StageOne extends State {
 
     private int time = 100;
     private Car car = new Car();
-    private RedCar redCar1 = new RedCar(-300, 14);
-    private RedCar redCar2 = new RedCar(-615, 14);
-    private RedCar redCar3 = new RedCar(-930, 14);
+    private enemy1 redCar1 = new enemy1(-300, 14);
+    private enemy1 redCar2 = new enemy1(-615, 14);
+    private enemy1 redCar3 = new enemy1(-930, 14);
     private Death death = new Death(-600, 10);
     private FinalLine finalLine = new FinalLine(10, -6000);
     private Road road = new Road(10);
     private boolean finishStage = false;
 
-    public List<RedCar> redCarList = new ArrayList<>();
+    public List<enemy1> redCarList = new ArrayList<>();
 
 
     private int count = 0;
