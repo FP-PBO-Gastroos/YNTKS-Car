@@ -12,12 +12,14 @@ public class StageThree extends State {
     private newCar newCar2 = new newCar(-1100, 15);
     private RedCar redCar1 = new RedCar(-750, 15);
     private RedCar redCar2 = new RedCar(-1450, 15);
-    private Truck truck1 = new Truck(-1700, 15);
+    private newCar2 car2 = new newCar2(-1700, 15);
+//    private newCar2 car3 = new newCar2(-1250, 15);
     private Barricade barricade = new Barricade(-800, 12);
     private int count = 0;
     private java.util.List<Elements> list = new ArrayList<>();
     private java.util.List<RedCar> redCarsArrayList = new ArrayList<>();
     private java.util.List<newCar> newCarArrayList = new ArrayList<>();
+    private java.util.List<newCar2> newCar2ArrayList = new ArrayList<>();
     private boolean finishStage = false;
     private int time = 100;
 
@@ -32,12 +34,16 @@ public class StageThree extends State {
         list.clear();
         redCarsArrayList.clear();
         newCarArrayList.clear();
+        newCar2ArrayList.clear();
         redCarsArrayList.add(redCar1);
         redCarsArrayList.add(redCar2);
         newCarArrayList.add(newCar1);
         newCarArrayList.add(newCar2);
+        newCar2ArrayList.add(car2);
+//        newCar2ArrayList.add(car3);
         list.addAll(redCarsArrayList);
         list.addAll(newCarArrayList);
+        list.addAll(newCar2ArrayList);
         list.add(barricade);
         count++;
 
@@ -93,41 +99,25 @@ public class StageThree extends State {
             graphics.drawImage(Resources.playPause,355, 20, 40, 35,null);
         }
 
-        //CODE TO RESTRICT TO BORN OTHER CARS IN REGION OF TRUCK
-        for (int i = 0; i < list.size(); i++) {
-            if (truck1.checkIntersection(list.get(i))) {
-                if (list.get(i) instanceof Barricade)
-                    truck1.hidden = true;
-                else
-                    truck1.hidden = true;
-            }
-
-        }
-
         //CODE  TO DISPLAY RED CARS
         for (int i = 0; i < redCarsArrayList.size(); i++)
             if (!redCarsArrayList.get(i).hidden)
                 graphics.drawImage(Resources.redCarImage, redCarsArrayList.get(i).x, redCarsArrayList.get(i).y, null);
 
-        //CODE TO DISPLAY WHITE CARS
+      //CODE TO DISPLAY WHITE CARS
         for (int i = 0; i < newCarArrayList.size(); i++)
             if (!newCarArrayList.get(i).hidden)
                 graphics.drawImage(Resources.newCarImage, newCarArrayList.get(i).x, newCarArrayList.get(i).y, null);
 
+      //CODE TO DISPLAY WHITE CARS
+        for (int i = 0; i < newCar2ArrayList.size(); i++)
+            if (!newCar2ArrayList.get(i).hidden)
+                graphics.drawImage(Resources.newCar2, newCar2ArrayList.get(i).x, newCar2ArrayList.get(i).y, null);
+
         //CODE TO DISPLAY BARRICADE
         if (!barricade.hidden)
             graphics.drawImage(Resources.baricadeImage, barricade.x, barricade.y, null);
-
-        //CODE TO DISPLAY TRUCK
-        if (!truck1.hidden)
-            graphics.drawImage(Resources.truckImage, truck1.x, truck1.y, null);
-
-        //CODE TO PLAY SOUND OF TRUCK
-        if (truck1.y==-190&&!truck1.hidden)
-            Resources.mainMenuTone.loop();
-        else if (truck1.y==890||truck1.hidden)
-            Resources.truckTone.stop();
-
+        
         //CODE TO CHECK INTERSECTION OF CAR WITH OTHER ELEMENTS
         for (int i = 0; i < list.size(); i++)
         {
@@ -146,21 +136,10 @@ public class StageThree extends State {
             }
         }
 
-        //CODE TO CHECK INTERSECTION OF CAR WITH TRUCK
-        if (!finishStage&&!truck1.hidden&&car.checkIntersection(truck1)) {
-            Resources.carCrash.play();
-            for (int j = 0; j < 1000; j++) {
-                graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
-            }
-            GamePanel.currentState = new GameOverState();
-
-        }
-
-
         //CODE TO UPDATE POSITION OF EVERY ELEMENT
         road.updatePos();
         car.updatePos();
-        truck1.updatePos();
+//        truck1.updatePos();
         finalLine.updatePos();
         for (int i = 0; i < list.size(); i++) {
             list.get(i).updatePos();
