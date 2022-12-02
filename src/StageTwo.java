@@ -13,7 +13,7 @@ public class StageTwo extends State {
     private newCar newCar3 = new newCar(-1400,15);
     private RedCar redCar1 = new RedCar(-650,15);
     private RedCar redCar2= new RedCar(-1150,15);
-    private Barricade barricade = new Barricade(-800,11);
+    private Death death = new Death(-800,11);
     private int count=0;
     private List<Elements> list = new ArrayList<>();
     private List<RedCar> redCarsArrayList = new ArrayList<>();
@@ -47,15 +47,15 @@ public class StageTwo extends State {
         list.addAll(redCarsArrayList);
         list.addAll(newCarArrayList);
 
-        list.add(barricade);
+        list.add(death);
         count++;
 
         //CODE TO REDUCE TIME
         if (count%10==0&&!finishStage)
             time--;
 
-        //CODE TO CHECK INTERSECTION OF CAR WITH BARRICADE OR TIMES UP
-        if (finishStage==false&&barricade.checkIntersection(car)||time<0) {
+        //CODE TO CHECK INTERSECTION OF CAR WITH death OR TIMES UP
+        if (finishStage==false&&death.checkIntersection(car)||time<0) {
             for (int i=0;i < 1000;i++)
             {
                 graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
@@ -87,10 +87,10 @@ public class StageTwo extends State {
         if (car.y<-1000)
             GamePanel.currentState= new WelcomeToStage3();
 
-        //CODE TO CHECK INTERSECTION OF OTHER CARS WITH BARRICADES
+        //CODE TO CHECK INTERSECTION OF OTHER CARS WITH deathS
         for (int i=0;i<list.size();i++)
         {
-            if (list.get(i).checkIntersection(barricade)&&!(list.get(i) instanceof  Barricade))
+            if (list.get(i).checkIntersection(death)&&!(list.get(i) instanceof  Death))
                 list.get(i).hidden=true;
         }
         //CODE TO DRAW THESE ELEMENTS
@@ -116,17 +116,17 @@ public class StageTwo extends State {
             if (!newCarArrayList.get(i).hidden)
             graphics.drawImage(Resources.newCarImage, newCarArrayList.get(i).x, newCarArrayList.get(i).y,null);
 
-        //CODE TO DISPLAY BARRICADE
-        graphics.drawImage(Resources.baricadeImage, barricade.x, barricade.y,null);
+        //CODE TO DISPLAY death
+        graphics.drawImage(Resources.baricadeImage, death.x, death.y,null);
 
         //CODE TO CHECK INTERSECTION OF CAR WITH OTHER ELEMENTS
         for (int i=0;i<list.size();i++)
         {
             if (car.checkIntersection(list.get(i))&&!list.get(i).hidden)
             {
-                time-=5;
+                time-=7;
 
-                if (!finishStage&&list.get(i) instanceof Barricade)
+                if (!finishStage&&list.get(i) instanceof Death)
                     GamePanel.currentState=new GameOverState();
                 else {
                     Resources.carCrash.play();

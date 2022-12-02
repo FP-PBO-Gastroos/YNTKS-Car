@@ -13,7 +13,7 @@ public class StageOne extends State {
     private RedCar redCar1 = new RedCar(-300, 14);
     private RedCar redCar2 = new RedCar(-615, 14);
     private RedCar redCar3 = new RedCar(-930, 14);
-    private Barricade barricade = new Barricade(-600, 10);
+    private Death death = new Death(-600, 10);
     private FinalLine finalLine = new FinalLine(10, -6000);
     private Road road = new Road(10);
     private boolean finishStage = false;
@@ -48,9 +48,9 @@ public class StageOne extends State {
         //CODE TO DRAW CAR
         graphics.drawImage(Resources.carImage, car.x, car.y, null);
 
-        //CODE TO DRAW BARRICADE
-        if (!barricade.hidden)
-            graphics.drawImage(Resources.baricadeImage, barricade.x, barricade.y, null);
+        //CODE TO DRAW death
+        if (!death.hidden)
+            graphics.drawImage(Resources.baricadeImage, death.x, death.y, null);
 
         //CODE TO DRAW RED CARS
         for (int i = 0; i < redCarList.size(); i++) {
@@ -79,16 +79,16 @@ public class StageOne extends State {
                 redCarList.get(i).yvel = 0;
 
             }
-            barricade.hidden = true;
+            death.hidden = true;
             car.xVel = 0;
             car.yvel = -25;
             road.yvel = 0;
-            barricade.yvel = 0;
+            death.yvel = 0;
 
         }
 
-        //CODE TO CHECK INTERSECTION OF CAR WITH BARRICADE OR TIMES UP
-        if (finishStage == false && barricade.checkIntersection(car) || time < 0) {
+        //CODE TO CHECK INTERSECTION OF CAR WITH death OR TIMES UP
+        if (finishStage == false && death.checkIntersection(car) || time < 0) {
             Resources.carCrash.play();
             for (int i = 0; i < 1000; i++) {
                 graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
@@ -100,9 +100,9 @@ public class StageOne extends State {
         if (car.y < -1000)
             GamePanel.currentState = new WelcomeToStage2();
 
-        //CODE TO HIDE RED CARS WHEN THEY HIT BARRICADE
+        //CODE TO HIDE RED CARS WHEN THEY HIT death
         for (int i = 0; i < redCarList.size(); i++) {
-            if (redCarList.get(i).checkIntersection(barricade))
+            if (redCarList.get(i).checkIntersection(death))
             	//diubah jadi false
                 redCarList.get(i).hidden = false;
         }
@@ -111,9 +111,9 @@ public class StageOne extends State {
         road.updatePos();
         finalLine.updatePos();
         car.updatePos();
-        barricade.updatePos();
+        death.updatePos();
 
-        //CODE TO CHECK INTERSECTION OF CAR WITH RED CARS
+        //CODE TO CHECK INTERSECTION OF CAR WITH ENEMY CAR
         for (int i = 0; i < redCarList.size(); i++) {
             if ((redCarList.get(i).hidden == false && car.checkIntersection(redCarList.get(i)) && !finishStage)) {
                 redCarList.get(i).hidden = true;

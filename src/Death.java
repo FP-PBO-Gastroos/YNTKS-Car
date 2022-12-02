@@ -1,10 +1,10 @@
 import java.awt.*;
 import java.util.Random;
 
-public class Barricade extends Elements {
+public class Death extends Elements {
     private Random random = new Random();
 
-    public Barricade(int origin,int vel)
+    public Death(int origin,int vel)
     {
         this.setX();
         this.y=origin;
