@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
-public class StageThree extends State {
+public class StageFive extends State {
     private Road road = new Road(12);
     private Car car = new Car();
     private FinalLine finalLine = new FinalLine(12, -8000);
@@ -80,7 +80,7 @@ public class StageThree extends State {
 
         //CODE TO MOVE TO NEXT STATE
         if (car.y < -1000)
-            GamePanel.currentState = new WelcomeToStage4();
+            GamePanel.currentState = new CompleteGame();
 
         //CODE TO CHECK INTERSECTION OF OTHER ELEMENTS WITH deathS
         for (int i = 0; i < list.size(); i++) {
