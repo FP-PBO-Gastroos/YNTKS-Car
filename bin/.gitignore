@@ -11,6 +11,8 @@
 /MenuState.class
 /Resources.class
 /Road.class
+/StageFive.class
+/StageFour.class
 /StageOne.class
 /StageThree.class
 /StageTwo.class
@@ -18,10 +20,8 @@
 /WelcomeToStage1.class
 /WelcomeToStage2.class
 /WelcomeToStage3.class
+/WelcomeToStage4.class
+/WelcomeToStage5.class
 /enemy1.class
 /enemy2.class
 /enemy3.class
-/WelcomeToStage4.class
-/StageFour.class
-/WelcomeToStage5.class
-/StageFive.class
