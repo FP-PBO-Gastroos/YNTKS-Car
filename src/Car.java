@@ -10,6 +10,7 @@ public class Car extends Elements{
         this.y=530;
         this.x=176;
         this.xVel=0;
+        this.yvel=0;
         this.width=55;
         this.height=80;
     }

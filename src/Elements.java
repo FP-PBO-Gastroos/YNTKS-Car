@@ -60,8 +60,12 @@ import java.util.Random;
             car.xVel = 7;
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             car.xVel = -7;
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN)
+        }  else if (e.getKeyCode() == KeyEvent.VK_UP) {
+            car.yvel = -3;
+        }  else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             car.xVel = 0;
+        }  else if (e.getKeyCode() == KeyEvent.VK_SPACE)
+        	car.yvel = 0;
     }
 
 

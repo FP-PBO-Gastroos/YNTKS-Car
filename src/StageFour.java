@@ -80,7 +80,7 @@ public class StageFour extends State {
 
         //CODE TO MOVE TO NEXT STATE
         if (car.y < -1000)
-            GamePanel.currentState = new WelcomeToStage4();
+            GamePanel.currentState = new WelcomeToStage5();
 
         //CODE TO CHECK INTERSECTION OF OTHER ELEMENTS WITH deathS
         for (int i = 0; i < list.size(); i++) {
