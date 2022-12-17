@@ -81,7 +81,7 @@ public class WelcomeToStage1 extends State{
         Rectangle r = new Rectangle(155,365,130,40);
         if (r.contains(e.getX(),e.getY()))
         {
-            GamePanel.currentState= new StageFive();
+            GamePanel.currentState= new CompleteGame();
         }
 
 
