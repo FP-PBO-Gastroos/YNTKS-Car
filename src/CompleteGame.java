@@ -18,7 +18,7 @@ public class CompleteGame extends State{
 
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0,0,400,700);
-        graphics.drawImage(Resources.congImage,0,100,400,400,null);
+        graphics.drawImage(Resources.completeGame,0,100,400,400,null);
         graphics.setColor(Color.BLACK);
         graphics.setFont(new Font("SansSerif",Font.PLAIN,35));
         graphics.drawString("PLAY AGAIN?",90,550);

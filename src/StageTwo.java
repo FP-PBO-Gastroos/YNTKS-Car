@@ -8,16 +8,16 @@ public class StageTwo extends State {
     private Road road = new Road(11);
     private Car car = new Car();
     private FinalLine finalLine = new FinalLine(12,-8000);
-    private enemy2 newCar1 = new enemy2(-400,15);
-    private enemy2 newCar2 = new enemy2(-900,15);
-    private enemy2 newCar3 = new enemy2(-1400,15);
-    private enemy1 redCar1 = new enemy1(-650,15);
-    private enemy1 redCar2= new enemy1(-1150,15);
+    private enemy1 enemy11 = new enemy1(-650,15);
+    private enemy1 enemy12= new enemy1(-1150,15);
+    private enemy2 enemy21 = new enemy2(-400,15);
+    private enemy2 enemy22 = new enemy2(-900,15);
+    private enemy2 enemy23 = new enemy2(-1400,15);
     private Death death = new Death(-800,11);
     private int count=0;
     private List<Elements> list = new ArrayList<>();
-    private List<enemy1> redCarsArrayList = new ArrayList<>();
-    private List<enemy2> newCarArrayList = new ArrayList<>();
+    private List<enemy1> enemy1ArrayList = new ArrayList<>();
+    private List<enemy2> enemy2ArrayList = new ArrayList<>();
     private boolean finishStage=false;
     private int time=100;
 
@@ -36,16 +36,16 @@ public class StageTwo extends State {
             Resources.carMoving.loop();
 
         }
-        redCarsArrayList.clear();
-        newCarArrayList.clear();;
+        enemy1ArrayList.clear();
+        enemy2ArrayList.clear();;
         list.clear();
-        redCarsArrayList.add(redCar1);
-        redCarsArrayList.add(redCar2);
-        newCarArrayList.add(newCar1);
-        newCarArrayList.add(newCar2);
-        newCarArrayList.add(newCar3);
-        list.addAll(redCarsArrayList);
-        list.addAll(newCarArrayList);
+        enemy1ArrayList.add(enemy11);
+        enemy1ArrayList.add(enemy12);
+        enemy2ArrayList.add(enemy21);
+        enemy2ArrayList.add(enemy22);
+        enemy2ArrayList.add(enemy23);
+        list.addAll(enemy1ArrayList);
+        list.addAll(enemy2ArrayList);
 
         list.add(death);
         count++;
@@ -96,7 +96,7 @@ public class StageTwo extends State {
         //CODE TO DRAW THESE ELEMENTS
         graphics.drawImage(Resources.roadImage,road.x,road.y,null);
         graphics.drawImage(Resources.finishLineImage,finalLine.x,finalLine.y,null);
-        graphics.drawImage(Resources.carImage,car.x,car.y,null);
+        graphics.drawImage(Resources.playerCar,car.x,car.y,null);
         graphics.setFont(new Font(Font.MONOSPACED,Font.BOLD,15));
         graphics.drawString("STAGE - 2",260,30);
 
@@ -107,17 +107,17 @@ public class StageTwo extends State {
         }
 
         //CODE TO DISPLAY RED CARS
-        for (int i = 0 ; i<redCarsArrayList.size();i++)
-            if (!redCarsArrayList.get(i).hidden)
-            graphics.drawImage(Resources.redCarImage, redCarsArrayList.get(i).x, redCarsArrayList.get(i).y,null);
+        for (int i = 0 ; i<enemy1ArrayList.size();i++)
+            if (!enemy1ArrayList.get(i).hidden)
+            graphics.drawImage(Resources.enemyCar1, enemy1ArrayList.get(i).x, enemy1ArrayList.get(i).y,null);
 
         //CODE TO DISPLAY WHITE CARS
-        for (int i = 0 ;i<newCarArrayList.size();i++)
-            if (!newCarArrayList.get(i).hidden)
-            graphics.drawImage(Resources.newCarImage, newCarArrayList.get(i).x, newCarArrayList.get(i).y,null);
+        for (int i = 0 ;i<enemy2ArrayList.size();i++)
+            if (!enemy2ArrayList.get(i).hidden)
+            graphics.drawImage(Resources.enemyCar2, enemy2ArrayList.get(i).x, enemy2ArrayList.get(i).y,null);
 
         //CODE TO DISPLAY death
-        graphics.drawImage(Resources.baricadeImage, death.x, death.y,null);
+        graphics.drawImage(Resources.death, death.x, death.y,null);
 
         //CODE TO CHECK INTERSECTION OF CAR WITH OTHER ELEMENTS
         for (int i=0;i<list.size();i++)
