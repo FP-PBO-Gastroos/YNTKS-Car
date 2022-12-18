@@ -13,8 +13,8 @@ public class StageOne extends State {
     private enemy1 enemy11 = new enemy1(-300, 14);
     private enemy1 enemy12 = new enemy1(-615, 14);
     private enemy1 enemy13 = new enemy1(-930, 14);
-    private Death death1 = new Death(-600, 10);
-    private Death death2 = new Death(-300, 20);
+    private Death death1 = new Death(-800, 10);
+    private Death death2 = new Death(-300, 10);
     private FinalLine finalLine = new FinalLine(10, -6000);
     private Road road = new Road(10);
     private boolean finishStage = false;
@@ -83,7 +83,10 @@ public class StageOne extends State {
             for (int i = 0; i < enemy1List.size(); i++) {
                 enemy1List.get(i).hidden = true;
                 enemy1List.get(i).yvel = 0;
-
+                          }
+            for (int i = 0; i < DeathList.size(); i++) {
+            	DeathList.get(i).yvel = 0;
+                DeathList.get(i).hidden = true;
             }
             car.xVel = 0;
             car.yvel = -25;

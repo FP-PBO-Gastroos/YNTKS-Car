@@ -46,7 +46,7 @@ import java.io.IOException;
             roadImage = ImageIO.read(Resources.class.getResource("Images/Road.png"));
             completeGame = ImageIO.read(Resources.class.getResource("Images/Completegame.png"));
             carCrash= Applet.newAudioClip(Resources.class.getResource("AudioClips/carcrash.wav"));
-            carMoving= Applet.newAudioClip(Resources.class.getResource("AudioClips/carSound.wav"));
+            carMoving= Applet.newAudioClip(Resources.class.getResource("AudioClips/V8Sound.wav"));
             mainMenuTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/backSongMenu.wav"));
             welcomeTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/backSongWelcome.wav"));
             gameOverTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/gameover.wav"));

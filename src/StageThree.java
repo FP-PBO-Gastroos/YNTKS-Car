@@ -1,8 +1,8 @@
 import java.awt.*;
-import java.awt.List;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StageThree extends State {
     private Road road = new Road(12);
@@ -14,12 +14,14 @@ public class StageThree extends State {
     private enemy2 enemy22 = new enemy2(-1100, 15);
     private enemy3 enemy31 = new enemy3(-1700, 15);
 //    private enemy22 car3 = new enemy22(-1250, 15);
-    private Death death = new Death(-800, 12);
+    private Death death1 = new Death(-600, 10);
+    private Death death2 = new Death(-300, 20);
     private int count = 0;
-    private java.util.List<Elements> list = new ArrayList<>();
-    private java.util.List<enemy1> enemy1ArrayList = new ArrayList<>();
-    private java.util.List<enemy2> enemy2ArrayList = new ArrayList<>();
-    private java.util.List<enemy3> enemy3ArrayList = new ArrayList<>();
+    private List<Elements> list = new ArrayList<>();
+    private List<enemy1> enemy1ArrayList = new ArrayList<>();
+    private List<enemy2> enemy2ArrayList = new ArrayList<>();
+    private List<enemy3> enemy3ArrayList = new ArrayList<>();
+    public  List<Death> DeathList = new ArrayList<>();
     private boolean finishStage = false;
     private int time = 100;
 
@@ -35,30 +37,24 @@ public class StageThree extends State {
         enemy1ArrayList.clear();
         enemy2ArrayList.clear();
         enemy3ArrayList.clear();
+        DeathList.clear();
         enemy1ArrayList.add(enemy11);
         enemy1ArrayList.add(enemy12);
         enemy2ArrayList.add(enemy21);
         enemy2ArrayList.add(enemy22);
         enemy3ArrayList.add(enemy31);
 //        enemy3ArrayList.add(car3);
+        DeathList.add(death1);
+        DeathList.add(death2);
         list.addAll(enemy1ArrayList);
         list.addAll(enemy2ArrayList);
         list.addAll(enemy3ArrayList);
-        list.add(death);
+        list.addAll(DeathList);
         count++;
 
         //CODE TO REDUCE TIME
         if (count % 10 == 0 && !finishStage)
             time--;
-
-        //CODE TO CHECK INTERSECTION OF CAR WITH deathOR TRUCK OR TIMES UP
-        if (finishStage == false && (death.checkIntersection(car)  || time < 0)) {
-            for (int i = 0; i < 1000; i++) {
-                graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
-            }
-
-            GamePanel.currentState = new GameOverState();
-        }
 
         //CODE CHECK WHEATHER CAR REACHED FINISH LINE OR NOT
         if (finalLine.checkIntersection(car)) {
@@ -72,6 +68,10 @@ public class StageThree extends State {
                 list.get(i).yvel = 0;
 
             }
+            for (int i = 0; i < DeathList.size(); i++) {
+            	DeathList.get(i).yvel = 0;
+                DeathList.get(i).hidden = true;
+            }
             car.xVel = 0;
             car.yvel = -25;
             road.yvel = 0;
@@ -82,10 +82,21 @@ public class StageThree extends State {
         if (car.y < -1000)
             GamePanel.currentState = new WelcomeToStage4();
 
-        //CODE TO CHECK INTERSECTION OF OTHER ELEMENTS WITH deathS
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).checkIntersection(death) && !(list.get(i) instanceof Death))
-                list.get(i).hidden = true;
+        //CODE TO CHECK INTERSECTION OF CAR WITH DEATH
+        for (int i = 0; i < DeathList.size(); i++) {
+            if ((DeathList.get(i).hidden == false && car.checkIntersection(DeathList.get(i)) && !finishStage )) {
+                DeathList.get(i).hidden = true;
+                Resources.carCrash.play();
+
+                for (int j = 0; j < 5000; j++)
+                    graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
+              
+                GamePanel.currentState = new GameOverState();
+            }
+            else if (time < 0) {
+            	GamePanel.currentState = new GameOverState();
+            }
+
         }
         graphics.drawImage(Resources.roadImage, road.x, road.y, null);
         graphics.drawImage(Resources.finishLineImage, finalLine.x, finalLine.y, null);
@@ -99,24 +110,27 @@ public class StageThree extends State {
             graphics.drawImage(Resources.playPause,355, 20, 40, 35,null);
         }
 
-        //CODE  TO DISPLAY RED CARS
+        //CODE  TO DISPLAY ENEMY CARS 1
         for (int i = 0; i < enemy1ArrayList.size(); i++)
             if (!enemy1ArrayList.get(i).hidden)
                 graphics.drawImage(Resources.enemyCar1, enemy1ArrayList.get(i).x, enemy1ArrayList.get(i).y, null);
 
-      //CODE TO DISPLAY WHITE CARS
+      //CODE TO DISPLAY ENEMY CARS 2
         for (int i = 0; i < enemy2ArrayList.size(); i++)
             if (!enemy2ArrayList.get(i).hidden)
                 graphics.drawImage(Resources.enemyCar2, enemy2ArrayList.get(i).x, enemy2ArrayList.get(i).y, null);
 
-      //CODE TO DISPLAY WHITE CARS
+      //CODE TO DISPLAY ENEMY CARS 3
         for (int i = 0; i < enemy3ArrayList.size(); i++)
             if (!enemy3ArrayList.get(i).hidden)
                 graphics.drawImage(Resources.enemyCar3, enemy3ArrayList.get(i).x, enemy3ArrayList.get(i).y, null);
 
-        //CODE TO DISPLAY death
-        if (!death.hidden)
-            graphics.drawImage(Resources.death, death.x, death.y, null);
+       //DRAW DEATH
+       for (int i = 0; i < DeathList.size(); i++) {
+        DeathList.get(i).updatePos();
+        if (DeathList.get(i).hidden == false)
+            graphics.drawImage(Resources.death, DeathList.get(i).x, DeathList.get(i).y, null);
+    }
         
         //CODE TO CHECK INTERSECTION OF CAR WITH OTHER ELEMENTS
         for (int i = 0; i < list.size(); i++)
@@ -139,7 +153,6 @@ public class StageThree extends State {
         //CODE TO UPDATE POSITION OF EVERY ELEMENT
         road.updatePos();
         car.updatePos();
-//        truck1.updatePos();
         finalLine.updatePos();
         for (int i = 0; i < list.size(); i++) {
             list.get(i).updatePos();

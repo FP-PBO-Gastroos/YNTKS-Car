@@ -13,11 +13,15 @@ public class StageTwo extends State {
     private enemy2 enemy21 = new enemy2(-400,15);
     private enemy2 enemy22 = new enemy2(-900,15);
     private enemy2 enemy23 = new enemy2(-1400,15);
-    private Death death = new Death(-800,11);
+    private Death death1 = new Death(-600, 10);
+    private Death death2 = new Death(-300, 20);
     private int count=0;
+
     private List<Elements> list = new ArrayList<>();
     private List<enemy1> enemy1ArrayList = new ArrayList<>();
     private List<enemy2> enemy2ArrayList = new ArrayList<>();
+    public List<Death> DeathList = new ArrayList<>();
+
     private boolean finishStage=false;
     private int time=100;
 
@@ -38,31 +42,27 @@ public class StageTwo extends State {
         }
         enemy1ArrayList.clear();
         enemy2ArrayList.clear();;
+        DeathList.clear();
         list.clear();
         enemy1ArrayList.add(enemy11);
         enemy1ArrayList.add(enemy12);
         enemy2ArrayList.add(enemy21);
         enemy2ArrayList.add(enemy22);
         enemy2ArrayList.add(enemy23);
+        DeathList.add(death1);
+        DeathList.add(death2);
         list.addAll(enemy1ArrayList);
         list.addAll(enemy2ArrayList);
+        list.addAll(DeathList);
 
-        list.add(death);
+        // list.add(death);
         count++;
 
         //CODE TO REDUCE TIME
         if (count%10==0&&!finishStage)
             time--;
 
-        //CODE TO CHECK INTERSECTION OF CAR WITH death OR TIMES UP
-        if (finishStage==false&&death.checkIntersection(car)||time<0) {
-            for (int i=0;i < 1000;i++)
-            {
-                graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
-            }
-            GamePanel.currentState = new GameOverState();
-        }
-
+        
         //CODE TO CHECK WHEATHER CAR REACHES FINISH LINE OR NOT
         if (finalLine.checkIntersection(car))
         {
@@ -77,9 +77,14 @@ public class StageTwo extends State {
                 list.get(i).yvel = 0;
 
             }
-            car.xVel=0;
-            car.yvel=-25;
-            road.yvel=0;
+            for (int i = 0; i < DeathList.size(); i++) {
+            	DeathList.get(i).yvel = 0;
+                DeathList.get(i).hidden = true;
+            }
+            car.xVel = 0;
+            car.yvel = -25;
+            road.yvel = 0;
+            
 
         }
 
@@ -87,12 +92,23 @@ public class StageTwo extends State {
         if (car.y<-1000)
             GamePanel.currentState= new WelcomeToStage3();
 
-        //CODE TO CHECK INTERSECTION OF OTHER CARS WITH deathS
-        for (int i=0;i<list.size();i++)
-        {
-            if (list.get(i).checkIntersection(death)&&!(list.get(i) instanceof  Death))
-                list.get(i).hidden=true;
+        //CODE TO CHECK INTERSECTION OF CAR WITH DEATH
+        for (int i = 0; i < DeathList.size(); i++) {
+            if ((DeathList.get(i).hidden == false && car.checkIntersection(DeathList.get(i)) && !finishStage )) {
+                DeathList.get(i).hidden = true;
+                Resources.carCrash.play();
+
+                for (int j = 0; j < 5000; j++)
+                    graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
+              
+                GamePanel.currentState = new GameOverState();
+            }
+            else if (time < 0) {
+            	GamePanel.currentState = new GameOverState();
+            }
+
         }
+
         //CODE TO DRAW THESE ELEMENTS
         graphics.drawImage(Resources.roadImage,road.x,road.y,null);
         graphics.drawImage(Resources.finishLineImage,finalLine.x,finalLine.y,null);
@@ -106,18 +122,22 @@ public class StageTwo extends State {
             graphics.drawImage(Resources.playPause,355, 20, 40, 35,null);
         }
 
-        //CODE TO DISPLAY RED CARS
+        //CODE TO DISPLAY ENEMY CARS 1
         for (int i = 0 ; i<enemy1ArrayList.size();i++)
             if (!enemy1ArrayList.get(i).hidden)
             graphics.drawImage(Resources.enemyCar1, enemy1ArrayList.get(i).x, enemy1ArrayList.get(i).y,null);
 
-        //CODE TO DISPLAY WHITE CARS
+        //CODE TO DISPLAY ENEMY CARS 2
         for (int i = 0 ;i<enemy2ArrayList.size();i++)
             if (!enemy2ArrayList.get(i).hidden)
             graphics.drawImage(Resources.enemyCar2, enemy2ArrayList.get(i).x, enemy2ArrayList.get(i).y,null);
 
-        //CODE TO DISPLAY death
-        graphics.drawImage(Resources.death, death.x, death.y,null);
+      //DRAW DEATH
+        for (int i = 0; i < DeathList.size(); i++) {
+            DeathList.get(i).updatePos();
+            if (DeathList.get(i).hidden == false)
+                graphics.drawImage(Resources.death, DeathList.get(i).x, DeathList.get(i).y, null);
+        }
 
         //CODE TO CHECK INTERSECTION OF CAR WITH OTHER ELEMENTS
         for (int i=0;i<list.size();i++)
