@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageThree extends State {
+    private int time = 140;
     private Road road = new Road(12);
     private Car car = new Car();
-    private FinalLine finalLine = new FinalLine(12, -8000);
+    private FinalLine finalLine = new FinalLine(12, -9000);
     private enemy1 enemy11 = new enemy1(-750, 15);
     private enemy1 enemy12 = new enemy1(-1450, 15);
     private enemy2 enemy21 = new enemy2(-400, 15);
@@ -23,7 +24,7 @@ public class StageThree extends State {
     private List<enemy3> enemy3ArrayList = new ArrayList<>();
     public  List<Death> DeathList = new ArrayList<>();
     private boolean finishStage = false;
-    private int time = 100;
+
 
     @Override
     public void update(Graphics graphics) {

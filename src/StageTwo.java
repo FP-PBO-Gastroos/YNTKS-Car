@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageTwo extends State {
+    private int time=120;
     private Road road = new Road(11);
     private Car car = new Car();
     private FinalLine finalLine = new FinalLine(12,-8000);
@@ -23,7 +24,6 @@ public class StageTwo extends State {
     public List<Death> DeathList = new ArrayList<>();
 
     private boolean finishStage=false;
-    private int time=100;
 
 
 
