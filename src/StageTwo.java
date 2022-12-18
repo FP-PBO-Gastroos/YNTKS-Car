@@ -16,13 +16,16 @@ public class StageTwo extends State {
     private enemy2 enemy23 = new enemy2(-1400,15);
     private Death death1 = new Death(-600, 10);
     private Death death2 = new Death(-300, 20);
+    private ExtraTime time1 = new ExtraTime(-100, 20);
+    private ExtraTime time2 = new ExtraTime(-400, 30);
     private int count=0;
 
     private List<Elements> list = new ArrayList<>();
     private List<enemy1> enemy1ArrayList = new ArrayList<>();
     private List<enemy2> enemy2ArrayList = new ArrayList<>();
     public List<Death> DeathList = new ArrayList<>();
-
+    public List<ExtraTime> TimeList = new ArrayList<>();
+    
     private boolean finishStage=false;
 
 
@@ -43,6 +46,7 @@ public class StageTwo extends State {
         enemy1ArrayList.clear();
         enemy2ArrayList.clear();;
         DeathList.clear();
+        TimeList.clear();
         list.clear();
         enemy1ArrayList.add(enemy11);
         enemy1ArrayList.add(enemy12);
@@ -51,6 +55,8 @@ public class StageTwo extends State {
         enemy2ArrayList.add(enemy23);
         DeathList.add(death1);
         DeathList.add(death2);
+        TimeList.add(time1);
+        TimeList.add(time2);
         list.addAll(enemy1ArrayList);
         list.addAll(enemy2ArrayList);
         list.addAll(DeathList);
@@ -81,6 +87,10 @@ public class StageTwo extends State {
             	DeathList.get(i).yvel = 0;
                 DeathList.get(i).hidden = true;
             }
+            for (int i = 0; i < TimeList.size(); i++) {
+            	TimeList.get(i).yvel = 0;
+                TimeList.get(i).hidden = true;
+            }
             car.xVel = 0;
             car.yvel = -25;
             road.yvel = 0;
@@ -108,6 +118,16 @@ public class StageTwo extends State {
             }
 
         }
+        
+        //CODE TO CHECK INTERSECTION OF CAR WITH EXTRATIME
+        for (int i = 0; i < TimeList.size(); i++) {
+            if ((TimeList.get(i).hidden == false && car.checkIntersection(TimeList.get(i)) && !finishStage)) {
+                TimeList.get(i).hidden = true;
+
+                time += 7;
+            }
+
+        }
 
         //CODE TO DRAW THESE ELEMENTS
         graphics.drawImage(Resources.roadImage,road.x,road.y,null);
@@ -132,11 +152,18 @@ public class StageTwo extends State {
             if (!enemy2ArrayList.get(i).hidden)
             graphics.drawImage(Resources.enemyCar2, enemy2ArrayList.get(i).x, enemy2ArrayList.get(i).y,null);
 
-      //DRAW DEATH
+        //DRAW DEATH
         for (int i = 0; i < DeathList.size(); i++) {
             DeathList.get(i).updatePos();
             if (DeathList.get(i).hidden == false)
                 graphics.drawImage(Resources.death, DeathList.get(i).x, DeathList.get(i).y, null);
+        }
+        
+        //DRAW EXTRATIME
+        for (int i = 0; i < TimeList.size(); i++) {
+            TimeList.get(i).updatePos();
+            if (TimeList.get(i).hidden == false)
+                graphics.drawImage(Resources.time, TimeList.get(i).x, TimeList.get(i).y, null);
         }
 
         //CODE TO CHECK INTERSECTION OF CAR WITH OTHER ELEMENTS
@@ -145,18 +172,20 @@ public class StageTwo extends State {
             if (car.checkIntersection(list.get(i))&&!list.get(i).hidden)
             {
                 time-=7;
-
+                
                 if (!finishStage&&list.get(i) instanceof Death)
                     GamePanel.currentState=new GameOverState();
                 else {
                     Resources.carCrash.play();
                     list.get(i).hidden = true;
                 }
+                
                 for (int j=0;j < 1000;j++)
                 {
                     graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
                 }
             }
+            
         }
 
 

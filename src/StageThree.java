@@ -14,15 +14,18 @@ public class StageThree extends State {
     private enemy2 enemy21 = new enemy2(-400, 15);
     private enemy2 enemy22 = new enemy2(-1100, 15);
     private enemy3 enemy31 = new enemy3(-1700, 15);
-//    private enemy22 car3 = new enemy22(-1250, 15);
     private Death death1 = new Death(-600, 10);
     private Death death2 = new Death(-300, 20);
+    private ExtraTime time1 = new ExtraTime(-100, 20);
+    private ExtraTime time2 = new ExtraTime(-400, 30);
     private int count = 0;
+    
     private List<Elements> list = new ArrayList<>();
     private List<enemy1> enemy1ArrayList = new ArrayList<>();
     private List<enemy2> enemy2ArrayList = new ArrayList<>();
     private List<enemy3> enemy3ArrayList = new ArrayList<>();
     public  List<Death> DeathList = new ArrayList<>();
+    public List<ExtraTime> TimeList = new ArrayList<>();
     private boolean finishStage = false;
 
 
@@ -39,14 +42,16 @@ public class StageThree extends State {
         enemy2ArrayList.clear();
         enemy3ArrayList.clear();
         DeathList.clear();
+        TimeList.clear();
         enemy1ArrayList.add(enemy11);
         enemy1ArrayList.add(enemy12);
         enemy2ArrayList.add(enemy21);
         enemy2ArrayList.add(enemy22);
         enemy3ArrayList.add(enemy31);
-//        enemy3ArrayList.add(car3);
         DeathList.add(death1);
         DeathList.add(death2);
+        TimeList.add(time1);
+        TimeList.add(time2);
         list.addAll(enemy1ArrayList);
         list.addAll(enemy2ArrayList);
         list.addAll(enemy3ArrayList);
@@ -72,6 +77,10 @@ public class StageThree extends State {
             for (int i = 0; i < DeathList.size(); i++) {
             	DeathList.get(i).yvel = 0;
                 DeathList.get(i).hidden = true;
+            }
+            for (int i = 0; i < TimeList.size(); i++) {
+            	TimeList.get(i).yvel = 0;
+                TimeList.get(i).hidden = true;
             }
             car.xVel = 0;
             car.yvel = -25;
@@ -99,6 +108,17 @@ public class StageThree extends State {
             }
 
         }
+        
+        //CODE TO CHECK INTERSECTION OF CAR WITH EXTRATIME
+        for (int i = 0; i < TimeList.size(); i++) {
+            if ((TimeList.get(i).hidden == false && car.checkIntersection(TimeList.get(i)) && !finishStage)) {
+                TimeList.get(i).hidden = true;
+
+                time += 10;
+            }
+
+        }
+        
         graphics.drawImage(Resources.roadImage, road.x, road.y, null);
         graphics.drawImage(Resources.finishLineImage, finalLine.x, finalLine.y, null);
         graphics.drawImage(Resources.playerCar, car.x, car.y, null);
@@ -131,7 +151,14 @@ public class StageThree extends State {
         DeathList.get(i).updatePos();
         if (DeathList.get(i).hidden == false)
             graphics.drawImage(Resources.death, DeathList.get(i).x, DeathList.get(i).y, null);
-    }
+       }
+       
+       //DRAW EXTRATIME
+       for (int i = 0; i < TimeList.size(); i++) {
+           TimeList.get(i).updatePos();
+           if (TimeList.get(i).hidden == false)
+               graphics.drawImage(Resources.time, TimeList.get(i).x, TimeList.get(i).y, null);
+       }
         
         //CODE TO CHECK INTERSECTION OF CAR WITH OTHER ELEMENTS
         for (int i = 0; i < list.size(); i++)

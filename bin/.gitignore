@@ -7,6 +7,7 @@
 /FinalLine.class
 /GameOverState.class
 /GamePanel.class
+/Help.class
 /Images/
 /MenuState.class
 /Resources.class
@@ -26,5 +27,6 @@
 /enemy2.class
 /enemy3.class
 /enemy4.class
-/About.class
-/Help.class
+/time.class
+/Time.class
+/ExtraTime.class

@@ -15,12 +15,15 @@ public class StageOne extends State {
     private enemy1 enemy13 = new enemy1(-930, 14);
     private Death death1 = new Death(-800, 10);
     private Death death2 = new Death(-300, 10);
+    private ExtraTime time1 = new ExtraTime(-100, 20);
+    private ExtraTime time2 = new ExtraTime(-400, 30);
     private FinalLine finalLine = new FinalLine(10, -6000);
     private Road road = new Road(10);
     private boolean finishStage = false;
     
     public List<enemy1> enemy1List = new ArrayList<>();
     public List<Death> DeathList = new ArrayList<>();
+    public List<ExtraTime> TimeList = new ArrayList<>();
 
     private int count = 0;
 
@@ -33,6 +36,8 @@ public class StageOne extends State {
             enemy1List.add(enemy13);
             DeathList.add(death1);
             DeathList.add(death2);
+            TimeList.add(time1);
+            TimeList.add(time2);
             Resources.welcomeTone.stop();
             Resources.carMoving.loop();
         }
@@ -64,6 +69,13 @@ public class StageOne extends State {
             if (DeathList.get(i).hidden == false)
                 graphics.drawImage(Resources.death, DeathList.get(i).x, DeathList.get(i).y, null);
         }
+        
+        //DRAW EXTRATIME
+        for (int i = 0; i < TimeList.size(); i++) {
+            TimeList.get(i).updatePos();
+            if (TimeList.get(i).hidden == false)
+                graphics.drawImage(Resources.time, TimeList.get(i).x, TimeList.get(i).y, null);
+        }
 
         graphics.setFont(new Font(Font.MONOSPACED, Font.BOLD, 15));
         graphics.drawString("STAGE - 1", 260, 30);
@@ -87,6 +99,10 @@ public class StageOne extends State {
             for (int i = 0; i < DeathList.size(); i++) {
             	DeathList.get(i).yvel = 0;
                 DeathList.get(i).hidden = true;
+            }
+            for (int i = 0; i < TimeList.size(); i++) {
+            	TimeList.get(i).yvel = 0;
+                TimeList.get(i).hidden = true;
             }
             car.xVel = 0;
             car.yvel = -25;
@@ -135,6 +151,15 @@ public class StageOne extends State {
 
         }
         
+        //CODE TO CHECK INTERSECTION OF CAR WITH EXTRATIME
+        for (int i = 0; i < TimeList.size(); i++) {
+            if ((TimeList.get(i).hidden == false && car.checkIntersection(TimeList.get(i)) && !finishStage)) {
+                TimeList.get(i).hidden = true;
+
+                time += 5;
+            }
+
+        }
     }
 
 
