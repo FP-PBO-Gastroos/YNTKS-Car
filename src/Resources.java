@@ -49,7 +49,7 @@ import java.io.IOException;
             welcomeStageImage = ImageIO.read(Resources.class.getResource("Images/menubg.jpg"));
             finishLineImage = ImageIO.read(Resources.class.getResource("Images/finishLine.png"));
             crashBoomImage = ImageIO.read(Resources.class.getResource("Images/crash.png"));
-            roadImage = ImageIO.read(Resources.class.getResource("Images/Road.png"));
+            roadImage = ImageIO.read(Resources.class.getResource("Images/RoadFinal.png"));
             completeGame = ImageIO.read(Resources.class.getResource("Images/Completegame.png"));
             help = ImageIO.read(Resources.class.getResource("Images/HELP.png"));
             carCrash= Applet.newAudioClip(Resources.class.getResource("AudioClips/carcrash.wav"));
