@@ -13,13 +13,14 @@ public class StageOne extends State {
     private enemy1 enemy11 = new enemy1(-300, 14);
     private enemy1 enemy12 = new enemy1(-615, 14);
     private enemy1 enemy13 = new enemy1(-930, 14);
-    private Death death = new Death(-600, 10);
+    private Death death1 = new Death(-600, 10);
+    private Death death2 = new Death(-300, 20);
     private FinalLine finalLine = new FinalLine(10, -6000);
     private Road road = new Road(10);
     private boolean finishStage = false;
-
+    
     public List<enemy1> enemy1List = new ArrayList<>();
-
+    public List<Death> DeathList = new ArrayList<>();
 
     private int count = 0;
 
@@ -30,6 +31,8 @@ public class StageOne extends State {
             enemy1List.add(enemy11);
             enemy1List.add(enemy12);
             enemy1List.add(enemy13);
+            DeathList.add(death1);
+            DeathList.add(death2);
             Resources.welcomeTone.stop();
             Resources.carMoving.loop();
         }
@@ -48,15 +51,18 @@ public class StageOne extends State {
         //CODE TO DRAW CAR
         graphics.drawImage(Resources.playerCar, car.x, car.y, null);
 
-        //CODE TO DRAW death
-        if (!death.hidden)
-            graphics.drawImage(Resources.death, death.x, death.y, null);
-
-        //CODE TO DRAW RED CARS
+        //CODE TO DRAW ENEMYCAR
         for (int i = 0; i < enemy1List.size(); i++) {
             enemy1List.get(i).updatePos();
             if (enemy1List.get(i).hidden == false)
                 graphics.drawImage(Resources.enemyCar1, enemy1List.get(i).x, enemy1List.get(i).y, null);
+        }
+        
+        //DRAW DEATH
+        for (int i = 0; i < DeathList.size(); i++) {
+            DeathList.get(i).updatePos();
+            if (DeathList.get(i).hidden == false)
+                graphics.drawImage(Resources.death, DeathList.get(i).x, DeathList.get(i).y, null);
         }
 
         graphics.setFont(new Font(Font.MONOSPACED, Font.BOLD, 15));
@@ -79,39 +85,21 @@ public class StageOne extends State {
                 enemy1List.get(i).yvel = 0;
 
             }
-            death.hidden = true;
             car.xVel = 0;
             car.yvel = -25;
             road.yvel = 0;
-            death.yvel = 0;
 
         }
 
-        //CODE TO CHECK INTERSECTION OF CAR WITH death OR TIMES UP
-        if (finishStage == false && death.checkIntersection(car) || time < 0) {
-            Resources.carCrash.play();
-            for (int i = 0; i < 1000; i++) {
-                graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
-            }
-            GamePanel.currentState = new GameOverState();
-        }
 
         //CODE TO MOVE TO SECOND STAGE
         if (car.y < -1000)
             GamePanel.currentState = new WelcomeToStage2();
 
-        //CODE TO HIDE RED CARS WHEN THEY HIT death
-        for (int i = 0; i < enemy1List.size(); i++) {
-            if (enemy1List.get(i).checkIntersection(death))
-            	//diubah jadi false
-                enemy1List.get(i).hidden = false;
-        }
-
         //CODE TO UPDATE POSITIONS OF EVERY ELEMENT
         road.updatePos();
         finalLine.updatePos();
         car.updatePos();
-        death.updatePos();
 
         //CODE TO CHECK INTERSECTION OF CAR WITH ENEMY CAR
         for (int i = 0; i < enemy1List.size(); i++) {
@@ -126,6 +114,24 @@ public class StageOne extends State {
             }
 
         }
+        
+      //CODE TO CHECK INTERSECTION OF CAR WITH DEATH
+        for (int i = 0; i < DeathList.size(); i++) {
+            if ((DeathList.get(i).hidden == false && car.checkIntersection(DeathList.get(i)) && !finishStage )) {
+                DeathList.get(i).hidden = true;
+                Resources.carCrash.play();
+
+                for (int j = 0; j < 5000; j++)
+                    graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
+              
+                GamePanel.currentState = new GameOverState();
+            }
+            else if (time < 0) {
+            	GamePanel.currentState = new GameOverState();
+            }
+
+        }
+        
     }
 
 
