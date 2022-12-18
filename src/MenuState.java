@@ -32,9 +32,9 @@ public class MenuState extends State {
 
     @Override
     public void onMousepressed(MouseEvent e) {
+    	Rectangle r1 =  new Rectangle(110,350,195,25); //MULAI
         Rectangle r2 =  new Rectangle(145,400,65,25); // KElUAR
-        Rectangle r1 =  new Rectangle(110,350,195,25); //MULAI
-        Rectangle r3 =  new Rectangle(163,450,325,25);
+        Rectangle r3 =  new Rectangle(163,450,325,25); // HELP
         if(r2.contains(e.getX(),e.getY()))
         {
             Demo.frame.dispatchEvent(new WindowEvent(Demo.frame, WindowEvent.WINDOW_CLOSING));
