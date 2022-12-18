@@ -17,6 +17,7 @@ import java.io.IOException;
     public static Image finishLineImage;
     public static Image playPause;
     public static Image completeGame;
+    public static Image help;
 
     public static Image welcomeStageImage;
     public static Image welcomeToGameImage;
@@ -48,6 +49,7 @@ import java.io.IOException;
             crashBoomImage = ImageIO.read(Resources.class.getResource("Images/crash.png"));
             roadImage = ImageIO.read(Resources.class.getResource("Images/Road.png"));
             completeGame = ImageIO.read(Resources.class.getResource("Images/Completegame.png"));
+            help = ImageIO.read(Resources.class.getResource("Images/HELP.png"));
             carCrash= Applet.newAudioClip(Resources.class.getResource("AudioClips/carcrash.wav"));
             carMoving= Applet.newAudioClip(Resources.class.getResource("AudioClips/V8Sound.wav"));
             mainMenuTone= Applet.newAudioClip(Resources.class.getResource("AudioClips/backSongMenu.wav"));

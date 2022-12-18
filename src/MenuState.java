@@ -26,7 +26,7 @@ public class MenuState extends State {
         graphics.setColor(Color.WHITE);
         graphics.drawString("MULAI GAME",110,375);
         graphics.drawString("KELUAR",145,425);
-        graphics.drawString("ABOUT",153,475);
+        graphics.drawString("HELP",163,475);
 
     }
 
@@ -34,7 +34,7 @@ public class MenuState extends State {
     public void onMousepressed(MouseEvent e) {
         Rectangle r2 =  new Rectangle(145,400,65,25); // KElUAR
         Rectangle r1 =  new Rectangle(110,350,195,25); //MULAI
-        Rectangle r3 =  new Rectangle(150,450,325,25);
+        Rectangle r3 =  new Rectangle(163,450,325,25);
         if(r2.contains(e.getX(),e.getY()))
         {
             Demo.frame.dispatchEvent(new WindowEvent(Demo.frame, WindowEvent.WINDOW_CLOSING));
@@ -45,7 +45,7 @@ public class MenuState extends State {
         }
         else if (r3.contains(e.getX(),e.getY()))
         {
-        	GamePanel.currentState= new WelcomeToStage1();
+        	GamePanel.currentState= new Help();
         }
 
     }
