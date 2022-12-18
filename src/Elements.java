@@ -63,8 +63,10 @@ import java.util.Random;
         }  else if (e.getKeyCode() == KeyEvent.VK_UP) {
             car.yvel = -3;
         }  else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            car.yvel = 3;
+        }  else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             car.xVel = 0;
-        }  else if (e.getKeyCode() == KeyEvent.VK_SPACE)
+        }  else if (e.getKeyCode() == KeyEvent.VK_SHIFT)
         	car.yvel = 0;
     }
 

@@ -12,8 +12,8 @@ public class StageFour extends State {
     private enemy1 enemy11 = new enemy1(-750, 15);
     private enemy1 enemy12 = new enemy1(-1450, 15);
     private enemy2 enemy21 = new enemy2(-400, 15);
-    private enemy2 enemy22 = new enemy2(-1100, 15);
-    private enemy3 enemy31 = new enemy3(-1700, 15);
+    private enemy3 enemy31 = new enemy3(-1100, 15);
+    private enemy4 enemy41 = new enemy4(-2000, 10);
     private Death death1 = new Death(-1200, 10);
     private Death death2 = new Death(-600, 20);
     private Death death3 = new Death(-200, 30);
@@ -22,6 +22,7 @@ public class StageFour extends State {
     private List<enemy1> enemy1ArrayList = new ArrayList<>();
     private List<enemy2> enemy2ArrayList = new ArrayList<>();
     private List<enemy3> enemy3ArrayList = new ArrayList<>();
+    private List<enemy4> enemy4ArrayList = new ArrayList<>();
     public  List<Death> DeathList = new ArrayList<>();
     private boolean finishStage = false;
 
@@ -37,12 +38,13 @@ public class StageFour extends State {
         enemy1ArrayList.clear();
         enemy2ArrayList.clear();
         enemy3ArrayList.clear();
+        enemy4ArrayList.clear();
         DeathList.clear();
         enemy1ArrayList.add(enemy11);
         enemy1ArrayList.add(enemy12);
         enemy2ArrayList.add(enemy21);
-        enemy2ArrayList.add(enemy22);
         enemy3ArrayList.add(enemy31);
+        enemy4ArrayList.add(enemy41);
 //        enemy3ArrayList.add(car3);
         DeathList.add(death1);
         DeathList.add(death2);
@@ -50,6 +52,7 @@ public class StageFour extends State {
         list.addAll(enemy1ArrayList);
         list.addAll(enemy2ArrayList);
         list.addAll(enemy3ArrayList);
+        list.addAll(enemy4ArrayList);
         list.addAll(DeathList);
         count++;
 
@@ -125,6 +128,11 @@ public class StageFour extends State {
         for (int i = 0; i < enemy3ArrayList.size(); i++)
             if (!enemy3ArrayList.get(i).hidden)
                 graphics.drawImage(Resources.enemyCar3, enemy3ArrayList.get(i).x, enemy3ArrayList.get(i).y, null);
+
+        //CODE TO DISPLAY ENEMY CARS 4
+        for (int i = 0; i < enemy4ArrayList.size(); i++)
+        if (!enemy4ArrayList.get(i).hidden)
+            graphics.drawImage(Resources.enemyCar4, enemy4ArrayList.get(i).x, enemy4ArrayList.get(i).y, null);
 
        //DRAW DEATH
        for (int i = 0; i < DeathList.size(); i++) {

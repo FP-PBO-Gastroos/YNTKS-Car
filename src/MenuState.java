@@ -24,24 +24,29 @@ public class MenuState extends State {
         graphics.drawString("YNTKS-CAR",62,320);
         graphics.setFont(new Font(Font.MONOSPACED,Font.BOLD,30));
         graphics.setColor(Color.WHITE);
-        graphics.drawString("START GAME",110,375);
-        graphics.drawString("EXIT",160,425);
+        graphics.drawString("MULAI GAME",110,375);
+        graphics.drawString("KELUAR",145,425);
+        graphics.drawString("ABOUT",153,475);
 
     }
 
     @Override
     public void onMousepressed(MouseEvent e) {
-        Rectangle r1 =  new Rectangle(175,400,65,25);
-        Rectangle r2 =  new Rectangle(110,350,195,25);
-        if(r1.contains(e.getX(),e.getY()))
+        Rectangle r2 =  new Rectangle(145,400,65,25); // KElUAR
+        Rectangle r1 =  new Rectangle(110,350,195,25); //MULAI
+        Rectangle r3 =  new Rectangle(150,450,325,25);
+        if(r2.contains(e.getX(),e.getY()))
         {
             Demo.frame.dispatchEvent(new WindowEvent(Demo.frame, WindowEvent.WINDOW_CLOSING));
         }
-        else if (r2.contains(e.getX(),e.getY()))
+        else if (r1.contains(e.getX(),e.getY()))
         {
             GamePanel.currentState= new WelcomeToStage1();
         }
-
+        else if (r3.contains(e.getX(),e.getY()))
+        {
+        	GamePanel.currentState= new WelcomeToStage1();
+        }
 
     }
 

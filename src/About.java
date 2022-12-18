@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-public class WelcomeToStage1 extends State{
+public class About extends State{
     private int count=0;
 
     @Override
