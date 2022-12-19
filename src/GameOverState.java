@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public class GameOverState extends State {
-    private Object[] options = {"PLAY AGAIN",
-            "EXIT",};
+    private Object[] options = {"MAIN LAGI",
+            "KELUAR",};
     private int n;
     @Override
     public void update(Graphics graphics)
@@ -16,8 +16,8 @@ public class GameOverState extends State {
         Resources.gameOverTone.loop();
 
         n = JOptionPane.showOptionDialog(Demo.frame,
-                "GAME OVER!!",
-                "THE CAR GAME",
+                "YO NDAK TAU KOK TANYA SAYA..",
+                "KOK KALAH SIH??!!",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,null,
                 options,
