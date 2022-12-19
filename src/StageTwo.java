@@ -140,6 +140,7 @@ public class StageTwo extends State {
         if (!finishStage) {
             graphics.drawString("TIME :" + time + "s", 260, 50);
             graphics.drawImage(Resources.playPause,355, 20, 40, 35,null);
+            graphics.drawImage(Resources.muteUnmute,355, 60, 40, 35,null);
         }
 
         //CODE TO DISPLAY ENEMY CARS 1
@@ -204,6 +205,7 @@ public class StageTwo extends State {
     @Override
     public void onMousepressed(MouseEvent e) {
         Elements.pause(e);
+        Elements.muteUnmute(e);
 
     }
 

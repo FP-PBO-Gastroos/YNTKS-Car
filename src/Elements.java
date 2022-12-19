@@ -12,7 +12,7 @@ import java.util.Random;
     public int width = 0;
     public boolean hidden = false;
     private Random random = new Random();
-
+    
     public void updatePos() {
         this.x += this.xVel;
         this.y += this.yvel;
@@ -54,7 +54,32 @@ import java.util.Random;
             Resources.welcomeTone.stop();
         }
     }
+    
+    public static void muteUnmute(MouseEvent e) {
+        Rectangle r = new Rectangle(355, 60, 40, 35);
+        if (r.contains(e.getX(), e.getY())) {
+            GamePanel.muteUnmute = !GamePanel.muteUnmute;
+        }
+        if (GamePanel.muteUnmute) {
+            // Stop all audio except when the game is paused
+            if (!GamePanel.pause) {
+                Resources.carMoving.stop();
+                Resources.welcomeTone.stop();
+            }
+            else {
+            	Resources.carMoving.stop();
+                Resources.welcomeTone.stop();
+            }
+        } else {
+            // Restart audio only if the game is not paused
+            if (!GamePanel.pause) {
+                Resources.carMoving.loop();
+                Resources.welcomeTone.stop();
+            }
+        }
+    }
 
+   
     public static void carHandling(KeyEvent e , Car car) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             car.xVel = 7;

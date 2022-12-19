@@ -13,7 +13,8 @@ public class GamePanel extends JPanel implements KeyListener,Runnable,MouseListe
     private static Image tempImage;
     public static  State currentState;
     public static boolean pause=false;
-
+    public static boolean muteUnmute=false;
+    
     public GamePanel()
     {
 
@@ -64,8 +65,7 @@ public class GamePanel extends JPanel implements KeyListener,Runnable,MouseListe
                 e.printStackTrace();
             }
             if (pause)
-                continue;
-
+            	continue;
 
 
             Graphics imageGraphics=tempImage.getGraphics();

@@ -46,7 +46,7 @@ public class StageOne extends State {
         //CODE TO REDUCE TIME
         if (count % 10 == 0 && !finishStage)
             time--;
-
+              
         //CODE TO DRAW ROAD
         graphics.drawImage(Resources.roadImage, road.x, road.y, null);
 
@@ -70,6 +70,8 @@ public class StageOne extends State {
                 graphics.drawImage(Resources.death, DeathList.get(i).x, DeathList.get(i).y, null);
         }
         
+        
+        
         //DRAW EXTRATIME
         for (int i = 0; i < TimeList.size(); i++) {
             TimeList.get(i).updatePos();
@@ -83,7 +85,8 @@ public class StageOne extends State {
         //CODE TO SHOW TIME AND PLAY PAUSE BUTTON
         if (!finishStage) {
             graphics.drawString("TIME :" + time + "s", 260, 50);
-           graphics.drawImage(Resources.playPause,355, 10, 40, 35,null);
+           graphics.drawImage(Resources.playPause,355, 20, 40, 35,null);
+           graphics.drawImage(Resources.muteUnmute,355, 60, 40, 35,null);
         }
 
         //CODE TO CHECK WHEATHER CAR REACHED FINISH LINE OR NOT
@@ -161,12 +164,11 @@ public class StageOne extends State {
 
         }
     }
-
-
+   
     @Override
     public void onMousepressed(MouseEvent e) {
         Elements.pause(e);
-
+        Elements.muteUnmute(e);
 
     }
 

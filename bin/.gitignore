@@ -4,6 +4,7 @@
 /Death.class
 /Demo.class
 /Elements.class
+/ExtraTime.class
 /FinalLine.class
 /GameOverState.class
 /GamePanel.class
@@ -27,6 +28,3 @@
 /enemy2.class
 /enemy3.class
 /enemy4.class
-/time.class
-/Time.class
-/ExtraTime.class
