@@ -17,6 +17,7 @@ import java.io.IOException;
     public static Image crashBoomImage;
     public static Image finishLineImage;
     public static Image playPause;
+    public static Image muteUnmute;
     public static Image completeGame;
     public static Image help;
 
@@ -45,6 +46,7 @@ import java.io.IOException;
             death = ImageIO.read(Resources.class.getResource("Images/death.png"));
             time = ImageIO.read(Resources.class.getResource("Images/time.png"));
             playPause = ImageIO.read(Resources.class.getResource("Images/playpause.jpg"));
+            muteUnmute = ImageIO.read(Resources.class.getResource("Images/muteUnmute.png"));
             welcomeToGameImage = ImageIO.read(Resources.class.getResource("Images/menubg.jpg"));
             welcomeStageImage = ImageIO.read(Resources.class.getResource("Images/menubg.jpg"));
             finishLineImage = ImageIO.read(Resources.class.getResource("Images/finishLine.png"));

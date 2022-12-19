@@ -83,7 +83,7 @@ public class StageOne extends State {
         //CODE TO SHOW TIME AND PLAY PAUSE BUTTON
         if (!finishStage) {
             graphics.drawString("TIME :" + time + "s", 260, 50);
-           graphics.drawImage(Resources.playPause,355, 20, 40, 35,null);
+           graphics.drawImage(Resources.playPause,355, 10, 40, 35,null);
         }
 
         //CODE TO CHECK WHEATHER CAR REACHED FINISH LINE OR NOT
