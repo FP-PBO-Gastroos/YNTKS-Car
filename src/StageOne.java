@@ -128,6 +128,9 @@ public class StageOne extends State {
             if ((enemy1List.get(i).hidden == false && car.checkIntersection(enemy1List.get(i)) && !finishStage)) {
                 enemy1List.get(i).hidden = true;
                 Resources.carCrash.play();
+                if (GamePanel.muteUnmute) {
+                	Resources.carCrash.stop();
+                }
 
                 for (int j = 0; j < 5000; j++)
                     graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);
@@ -142,6 +145,9 @@ public class StageOne extends State {
             if ((DeathList.get(i).hidden == false && car.checkIntersection(DeathList.get(i)) && !finishStage )) {
                 DeathList.get(i).hidden = true;
                 Resources.carCrash.play();
+                if (GamePanel.muteUnmute) {
+                	Resources.carCrash.stop();
+                }
 
                 for (int j = 0; j < 5000; j++)
                     graphics.drawImage(Resources.crashBoomImage, car.x, car.y, null);

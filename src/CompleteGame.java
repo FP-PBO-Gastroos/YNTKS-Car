@@ -21,10 +21,10 @@ public class CompleteGame extends State{
         graphics.drawImage(Resources.completeGame,0,100,400,400,null);
         graphics.setColor(Color.BLACK);
         graphics.setFont(new Font("SansSerif",Font.PLAIN,35));
-        graphics.drawString("PLAY AGAIN?",90,550);
+        graphics.drawString("MAIN LAGI?",90,550);
         graphics.setFont(new Font("SansSerif",Font.PLAIN,30));
-        graphics.drawString("YES",105,600);
-        graphics.drawString("NO",220,600);
+        graphics.drawString("YA",105,600);
+        graphics.drawString("TIDAK",180,600);
 
 
 
@@ -34,7 +34,7 @@ public class CompleteGame extends State{
     @Override
     public void onMousepressed(MouseEvent e) {
         Rectangle r = new Rectangle(105,570,60,40);
-        Rectangle r1 = new Rectangle(220,570,50,40);
+        Rectangle r1 = new Rectangle(180,570,50,40);
         if (r.contains(e.getX(),e.getY()))
         {
             GamePanel.currentState= new MenuState();
