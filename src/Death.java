@@ -14,7 +14,7 @@ public class Death extends Elements {
     // mengatur posisi y sesuai dengan parameter origin
     this.y = origin;
     // mengatur kecepatan y sesuai dengan parameter vel
-    this.yvel = vel;
+    this.yvel = 5;
     // mengatur lebar objek
     this.width = 44;
     // mengatur tinggi objek
