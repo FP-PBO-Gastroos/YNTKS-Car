@@ -60,6 +60,7 @@ public class StageFive extends State {
         list.addAll(enemy3ArrayList);
         list.addAll(enemy4ArrayList);
         list.addAll(DeathList);
+        list.addAll(TimeList);
         count++;
 
         //CODE TO REDUCE TIME
