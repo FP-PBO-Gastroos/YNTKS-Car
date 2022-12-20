@@ -57,10 +57,10 @@ public class StageTwo extends State {
         DeathList.add(death2);
         TimeList.add(time1);
         TimeList.add(time2);
-        list.addAll(enemy1ArrayList);
-        list.addAll(enemy2ArrayList);
-        list.addAll(DeathList);
-        list.addAll(TimeList);
+//        list.addAll(enemy1ArrayList);
+//        list.addAll(enemy2ArrayList);
+//        list.addAll(DeathList);
+//        list.addAll(TimeList);
 
         // list.add(death);
         count++;
