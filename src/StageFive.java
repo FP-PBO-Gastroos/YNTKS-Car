@@ -13,7 +13,7 @@ public class StageFive extends State {
     private enemy1 enemy12 = new enemy1(-1450, 15);
     private enemy2 enemy21 = new enemy2(-400, 15);
     private enemy3 enemy31 = new enemy3(-1100, 15);
-    private enemy4 enemy41 = new enemy4(-2000, 10);
+    private enemy4 enemy41 = new enemy4(-2000, 15);
     private Death death1 = new Death(-1200, 10);
     private Death death2 = new Death(-600, 20);
     private Death death3 = new Death(-200, 30);
@@ -60,7 +60,7 @@ public class StageFive extends State {
         list.addAll(enemy3ArrayList);
         list.addAll(enemy4ArrayList);
         list.addAll(DeathList);
-        list.addAll(TimeList);
+//        list.addAll(TimeList);
         count++;
 
         //CODE TO REDUCE TIME
