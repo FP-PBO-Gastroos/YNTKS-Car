@@ -1,9 +1,15 @@
 import java.util.Random;
-
+	/**
+	Kelas untuk mengendalikan enemy2.
+	*/
 public class enemy2 extends Elements {
-
+	// Atribut untuk menggenerate angka random
     Random random = new Random();
-    
+    /**
+    Konstruktor untuk membuat objek enemy2 baru.
+     origin Titik awal y enemy2.
+     vel Kecepatan enemy2.
+    */
     public enemy2(int origin, int vel)
     {
         this.setXRandom(5,340);
@@ -12,7 +18,10 @@ public class enemy2 extends Elements {
         this.height=80;
         this.width=55;
     }
-
+    /**
+    Method untuk mengecek apakah enemy2 sudah melewati batas layar.
+    Jika ya, maka posisi enemy2 akan direset ke atas layar dan nilai hidden akan dikembalikan ke false.
+    */
     public void checkBound()
     {
         if (this.y>800)

@@ -1,40 +1,36 @@
-import java.awt.*;
-import java.util.Random;
+import java.awt.*; // import kelas awt
+import java.util.Random; // import kelas random
 
-public class Death extends Elements{
+// kelas Death merupakan turunan dari kelas Elements
+public class Death extends Elements {
 
-    Random random = new Random();
+  // membuat objek random
+  Random random = new Random();
 
-    public Death(int origin,int vel)
-    {
-        this.setXRandom(5,340);
-        this.y=origin;
-        this.yvel=5;
-        this.width=44;
-        this.height=46;
+  // constructor kelas Death dengan parameter origin dan vel
+  public Death(int origin, int vel) {
+    // mengatur posisi x secara acak antara 5 sampai 340
+    this.setXRandom(5, 340);
+    // mengatur posisi y sesuai dengan parameter origin
+    this.y = origin;
+    // mengatur kecepatan y sesuai dengan parameter vel
+    this.yvel = vel;
+    // mengatur lebar objek
+    this.width = 44;
+    // mengatur tinggi objek
+    this.height = 46;
+  }
+
+  // method untuk mengecek batas objek
+  public void checkBound() {
+    // jika posisi y melebihi batas 800
+    if (this.y > 800) {
+      // mengubah objek menjadi tidak terlihat
+      this.hidden = false;
+      // mengatur posisi y menjadi -400
+      this.y = -400;
+      // mengatur posisi x secara acak antara 5 sampai 340
+      this.setXRandom(5, 340);
     }
-
-
-    public void checkBound()
-    {
-        if(this.y>800) {
-            this.hidden=false;
-            this.y = -400;
-            this.setXRandom(5,340);
-        }
-
-    }
+  }
 }
-
-//    private void setX()
-//    {
-//        int r= random.nextInt(2);
-//        if (r==0)
-//            this.x=0;
-//        else
-//        	//letak x salah satu death
-//            this.x=325;
-//    }
-
-
-

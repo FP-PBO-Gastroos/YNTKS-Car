@@ -1,20 +1,25 @@
-import javax.swing.*;
+import javax.swing.*; // import kelas swing
 
+// kelas Demo
 public class Demo {
-    public static JFrame frame;
+  // deklarasi frame sebagai objek JFrame
+  public static JFrame frame;
 
-    public static void main(String[] args) {
-        frame =  new JFrame("YNTKS Car");
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+  public static void main(String[] args) {
+    // membuat objek frame dengan judul "YNTKS Car"
+    frame = new JFrame("YNTKS Car");
+    // mengatur agar program berhenti saat frame ditutup
+    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-
-
-        GamePanel panel = new GamePanel();
-        frame.setContentPane(panel);
-        frame.setResizable(false);
-        frame.pack();
-        frame.setVisible(true);
-
-
-    }
+    // membuat objek panel sebagai GamePanel
+    GamePanel panel = new GamePanel();
+    // mengatur panel sebagai content pane dari frame
+    frame.setContentPane(panel);
+    // mengatur agar frame tidak bisa diubah ukurannya
+    frame.setResizable(false);
+    // menyesuaikan ukuran frame sesuai dengan komponen di dalamnya
+    frame.pack();
+    // menampilkan frame
+    frame.setVisible(true);
+  }
 }
